@@ -1,15 +1,16 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import Link from 'next/link'
+import Avatar from "./avatar";
+import Date from "./date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
+import Tags from "./tailwind/tags";
 
 export default function PostPreview({
   title,
   coverImage,
   date,
   excerpt,
-  author,
   slug,
+  tags,
 }) {
   return (
     <div>
@@ -21,11 +22,13 @@ export default function PostPreview({
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>
-      <div className="text-lg mb-4">
+      <div className="text-lg mb-4 flex">
         <Date dateString={date} />
+        <div className="px-2">
+          {tags && tags.map((el) => <Tags tagName={`${el.metadata.tag}`} />)}
+        </div>
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.title} picture={author.metadata.picture.imgix_url} />
     </div>
-  )
+  );
 }
