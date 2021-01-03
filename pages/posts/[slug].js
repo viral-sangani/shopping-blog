@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "@/components/container";
-import PostBody from "@/components/post-body";
 import MoreStories from "@/components/more-stories";
-import Header from "@/components/tailwind/header";
+import Header from "@/components/header";
 import PostHeader from "@/components/post-header";
 import SectionSeparator from "@/components/section-separator";
 import Layout from "@/components/layout";
@@ -12,6 +10,8 @@ import PostTitle from "@/components/post-title";
 import Head from "next/head";
 import { CMS_NAME } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
+import MorePostSidebar from "@/components/more-posts-sidebar";
+import PostBody from "@/components/post-body";
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
@@ -44,8 +44,9 @@ export default function Post({ post, morePosts, preview }) {
               />
               <div className="flex flex-wrap">
                 <PostBody content={post.content} />
-                <div className="lg:w-5/12 w-full">Viral</div>
+                <MorePostSidebar posts={morePosts} />
               </div>
+              <MorePostSidebar />
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}

@@ -6,7 +6,7 @@ import Layout from "@/components/layout";
 import { getAllPostsForHome } from "@/lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "@/lib/constants";
-import Header from "@/components/tailwind/header";
+import Header from "@/components/header";
 import PostPreview from "@/components/post-preview";
 
 export default function Index({ allPosts }) {
